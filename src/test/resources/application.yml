@@ -1,0 +1,9 @@
+kafka:
+  userBookmarkEventsJson:
+    topic: UserBookmarkEventsJson
+    numberOfConsumers: 1
+    consumerGroupId: e2e
+  userBookmarkEventsAvro:
+    topic: UserBookmarkEventsAvro
+    numberOfConsumers: 1
+    consumerGroupId: e2e

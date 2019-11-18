@@ -1,0 +1,20 @@
+kafka:
+  # the address for the Apache Kafka servers
+  bootstrapServers:
+  # the address for the Confluent Schema Registry server
+  schemaRegistryUrl:
+
+  userBookmarkEventsJson:
+    # the topic name under which to listen for JSON UserBookmarkEvents
+    topic:
+    # the number of consumers for the previously mentioned topic
+    numberOfConsumers:
+    # the consumer group id for the consumer ingesting JSON UserBookmarkEvents
+    consumerGroupId:
+  userBookmarkEventsAvro:
+    # the topic name under which to listen for AVRO UserBookmarkEvents
+    topic:
+    # the number of consumers for the previously mentioned topic
+    numberOfConsumers:
+    # the consumer group id for the consumer ingesting AVRO UserBookmarkEvents
+    consumerGroupId:

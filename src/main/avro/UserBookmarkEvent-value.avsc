@@ -1,0 +1,16 @@
+{
+  "type" : "record",
+  "name" : "UserBookmarkEvent",
+  "namespace" : "com.findinpath.kafka.dto.avro",
+  "fields" : [ {
+    "name" : "userId",
+    "type" : "string"
+  }, {
+    "name" : "url",
+    "type" : "string"
+  }, {
+    "name" : "timestamp",
+    "type" : "long",
+    "logicalType" : "timestamp-millis"
+  }]
+}

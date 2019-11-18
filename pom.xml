@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns="http://maven.apache.org/POM/4.0.0"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <artifactId>kafkalistener-e2e-test</artifactId>
+
+  <build>
+    <plugins>
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <groupId>org.apache.maven.plugins</groupId>
+        <version>3.8.1</version>
+      </plugin>
+      <plugin>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <groupId>org.apache.maven.plugins</groupId>
+        <version>3.0.0-M3</version>
+      </plugin>
+
+      <plugin>
+        <artifactId>avro-maven-plugin</artifactId>
+        <executions>
+          <execution>
+            <configuration>
+              <fieldVisibility>PRIVATE</fieldVisibility>
+              <outputDirectory>src/main/generated-sources/</outputDirectory>
+              <sourceDirectory>${avro.schema.dir}</sourceDirectory>
+              <stringType>String</stringType>
+            </configuration>
+            <goals>
+              <goal>schema</goal>
+            </goals>
+            <phase>generate-sources</phase>
+          </execution>
+        </executions>
+        <groupId>org.apache.avro</groupId>
+        <version>1.8.2</version>
+      </plugin>
+
+    </plugins>
+  </build>
+  <dependencies>
+
+    <dependency>
+      <artifactId>jackson-annotations</artifactId>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <version>${jackson.version}</version>
+    </dependency>
+    <dependency>
+      <artifactId>jackson-databind</artifactId>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <version>${jackson.version}</version>
+    </dependency>
+    <dependency>
+      <artifactId>jackson-core</artifactId>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <version>${jackson.version}</version>
+    </dependency>
+
+
+    <dependency>
+      <artifactId>spring-boot-starter</artifactId>
+      <groupId>org.springframework.boot</groupId>
+      <version>${spring.boot.version}</version>
+    </dependency>
+
+    <dependency>
+      <artifactId>spring-boot-starter-test</artifactId>
+      <groupId>org.springframework.boot</groupId>
+      <scope>test</scope>
+      <version>${spring.boot.version}</version>
+    </dependency>
+
+
+    <dependency>
+      <artifactId>spring-kafka</artifactId>
+      <groupId>org.springframework.kafka</groupId>
+      <version>${spring.kafka.version}</version>
+    </dependency>
+
+    <dependency>
+      <artifactId>spring-kafka-test</artifactId>
+      <groupId>org.springframework.kafka</groupId>
+      <scope>test</scope>
+      <version>${spring.kafka.version}</version>
+    </dependency>
+
+
+    <dependency>
+      <artifactId>kafka-avro-serializer</artifactId>
+      <groupId>io.confluent</groupId>
+      <version>${confluent.version}</version>
+    </dependency>
+    <dependency>
+      <artifactId>avro</artifactId>
+      <groupId>org.apache.avro</groupId>
+      <version>${avro.version}</version>
+    </dependency>
+
+
+    <dependency>
+      <artifactId>junit-jupiter</artifactId>
+      <groupId>org.testcontainers</groupId>
+      <scope>test</scope>
+      <version>${testcontainers.version}</version>
+    </dependency>
+    <dependency>
+      <artifactId>junit-jupiter-engine</artifactId>
+      <groupId>org.junit.jupiter</groupId>
+      <scope>test</scope>
+      <version>${junit.version}</version>
+    </dependency>
+    <dependency>
+      <artifactId>slf4j-simple</artifactId>
+      <groupId>org.slf4j</groupId>
+      <scope>test</scope>
+      <version>1.7.28</version>
+    </dependency>
+
+
+  </dependencies>
+  <groupId>org.example</groupId>
+
+
+  <modelVersion>4.0.0</modelVersion>
+
+  <pluginRepositories>
+    <pluginRepository>
+      <id>confluent</id>
+      <url>https://packages.confluent.io/maven/</url>
+    </pluginRepository>
+  </pluginRepositories>
+
+
+  <properties>
+    <avro.version>1.9.1</avro.version>
+    <confluent.version>5.3.1</confluent.version>
+    <generatedsources.dir>${project.basedir}/src/main/generated-sources/</generatedsources.dir>
+    <jackson.version>2.10.1</jackson.version>
+    <java.version>11</java.version>
+    <junit.version>5.5.2</junit.version>
+    <maven.compiler.release>11</maven.compiler.release>
+    <spring.boot.version>2.2.1.RELEASE</spring.boot.version>
+    <spring.kafka.version>2.3.3.RELEASE</spring.kafka.version>
+    <testcontainers.version>1.12.3</testcontainers.version>
+  </properties>
+
+
+  <repositories>
+    <repository>
+      <id>confluent</id>
+      <name>confluent.io Repo</name>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+      <url>https://packages.confluent.io/maven/</url>
+    </repository>
+  </repositories>
+  <version>1.0-SNAPSHOT</version>
+</project>
