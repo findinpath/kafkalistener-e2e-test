@@ -1,10 +1,9 @@
 package com.findinpath.kafka.testcontainers;
 
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.stream.Stream;
-import org.testcontainers.containers.GenericContainer;
 import org.testcontainers.containers.Network;
+import org.testcontainers.lifecycle.Startables;
 
 public class KafkaTestContainers {
 
@@ -23,15 +22,9 @@ public class KafkaTestContainers {
 				zookeeperContainer.getZookeeperConnect())
 				.withNetwork(network);
 
-		Runtime.getRuntime()
-				.addShutdownHook(new Thread(() ->
-								Arrays.asList(zookeeperContainer, kafkaContainer, schemaRegistryContainer)
-										.parallelStream().forEach(GenericContainer::stop)
-						)
-				);
-
-		Stream.of(zookeeperContainer, kafkaContainer, schemaRegistryContainer).parallel()
-				.forEach(GenericContainer::start);
+    Startables
+        .deepStart(Stream.of(zookeeperContainer, kafkaContainer, schemaRegistryContainer))
+        .join();
 	}
 
 	public ZookeeperContainer getZookeeperContainer() {
