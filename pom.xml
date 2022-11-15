@@ -136,7 +136,7 @@
     <avro.version>1.9.1</avro.version>
     <confluent.version>5.3.1</confluent.version>
     <generatedsources.dir>${project.basedir}/src/main/generated-sources/</generatedsources.dir>
-    <jackson.version>2.10.1</jackson.version>
+    <jackson.version>2.12.7.1</jackson.version>
     <java.version>11</java.version>
     <junit.version>5.5.2</junit.version>
     <maven.compiler.release>11</maven.compiler.release>
